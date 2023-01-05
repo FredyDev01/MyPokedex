@@ -24,7 +24,7 @@
 </div>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
 <script src="https://unpkg.com/vuex@3.5.1/dist/vuex.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
 <script>
@@ -62,6 +62,7 @@
             ...Vuex.mapActions(['ListInd'])        
         }
     })
+
 
     Vue.component("Pokemones", {
         template: `
@@ -116,6 +117,7 @@
         }
     })
 
+
     Vue.component("Modal", {
         template: `
         <div class="absolute inset-0" v-bind:class="{'hidden': !Modal.Estado}">
@@ -157,6 +159,7 @@
             ...Vuex.mapMutations(["MostrarPoke", "ClosePoke"])
         }
     })
+
 
     const store = new Vuex.Store({
         state: {
@@ -255,8 +258,6 @@
                 commit('GenerarPaginador', TotalPage)                
             },
 
-
-
             ListInd: async function({ dispatch, commit, state }, Aleatorio, Page){                                
                 state.Aleatorio = false
                 state.Lista = false                
@@ -339,12 +340,18 @@
                     DataInd.Clasificacion.push(x.type.name)
                 })                
                 var Descripcion = DescripPoke.flavor_text_entries
-                var DataDsp = Descripcion.filter(item=> item.language.name == "es")
+                var Language = 'en'
+                if(Descripcion.some(m=>m.language.name==='es')){
+                    Language = 'es'
+                }
+                var DataDsp = Descripcion.filter(item=> item.language.name == Language)                
                 DataInd.Descripcion = DataDsp[0].flavor_text 
                 commit("MostrarPoke", DataInd)
             }
         }
     })
+
+    
     const Dev = new Vue({
         el: "#Main",
         store
