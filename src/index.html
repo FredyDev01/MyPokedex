@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="public/Images/Icono.png">
+    <link rel="icon" href="assets/Icono.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="public/css/Tailwind.css">
-    <link rel="stylesheet" href="public/css/Fonts.css">
+    <link rel="stylesheet" href="tailwind/Tailwind.css">
+    <link rel="stylesheet" href="tailwind/Fonts.css">
     <title>Mi pokedex</title>
 </head>
 <body>
 <div class="w-full relative bg-gray-200" id="Main">    
     <Modal></Modal>
     <header class="relative flex justify-center items-center">
-        <div class="z-0 absolute w-full h-full bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('public/Images/FondoHeader.png');"></div>        
+        <div class="z-0 absolute w-full h-full bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('assets/FondoHeader.png');"></div>        
         <div class="z-10 relative w-full h-full px-4  py-20 sm:py-24 sm:px-10 text-center" style="background-image: linear-gradient(120deg, rgba(239, 68, 68, 0.705) 0%, rgba(55, 97, 168, 0.705) 100%);">
             <h1 class="text-5xl 2xs:text-6xl 1/2lg:text-6xl 1lg:text-7xl text-white font-Ubuntu font-bold">Bienvenido a la pokedex <br> de pokémon</h1>
         </div>
@@ -67,12 +67,12 @@
         template: `
         <section class="w-full overflow-hidden py-28 px-0 xxs:px-2 lg:px-0 mx-auto min-h-screen" style="max-width: 1280px">                        
             <div class="flex items-center mb-9 2md:mb-16 px-4 Alcatel:px-7 xl:px-2">                
-                <img src="public/Images/Pokebola.png" class="h-10">
+                <img src="assets/Pokebola.png" class="h-10">
                 <h3 class="w-full px-3 text-xl 2md:text-2xl text-black">Listado pokedex</h3>
             </div>
             <div v-if="ListPokemon.length > 0" class="flex-col items-center 1/2xs:items-stretch 1/2xs:flex-row flex 1/2xs:justify-evenly 1/2lg:justify-center flex-wrap py-5">                                                                                
                 <div v-for="item in ListPokemon" @click="DatosEpc(item.id)" class="relative bg-white overflow-hidden w-w-90 Alcatel:w-72 1/2xs:w-56 xxs:w-64 sm:w-60 rounded-lg shadow-lg mx-0 sm:mx-6 2md:mx-7 lg:mx-5 xxs:mx-5 md:my-8 my-6 pt-5 flex flex-col justify-center transform transition cursor: duration-200 hover:scale-110 cursor-pointer">
-                    <div class="absolute w-full h-36  1/2xs:h-28 xxs:h-36 inset-0 bg-cover bg-center bg-no-repeat" style="background: url('public/Images/FondoInd.png')">
+                    <div class="absolute w-full h-36  1/2xs:h-28 xxs:h-36 inset-0 bg-cover bg-center bg-no-repeat" style="background: url('assets/FondoInd.png')">
                         <ul class="flex justify-start w-full px-2 py-2 text-sm 1/2xs:text-xs xxs:text-sm">
                             <li class="text-red-50 mx-2 py-1">Hp: {{item.Vida}}</li>
                             <li class="text-red-50 mx-2 py-1">Atack: {{item.Ataque}}</li>
@@ -81,7 +81,7 @@
                     </div>                                        
                     <div class="relative overflow-hidden z-10 w-32 h-32 1/2xs:w-24 1/2xs:h-24 xxs:w-32 xxs:h-32 mt-14 1/2xs:mt-11 xxs:mt-14 mx-auto rounded-full border-4 border-red-200 px-2 py-2 flex justify-center items-center">
                         <div class="absolute w-full h-full inset-0" style="background: linear-gradient(160deg, rgb(254 202 202) 0%, rgb(254 202 202) 50%, white 50%,  white 100%);">s</div>
-                        <img v-bind:src="item.Imagen ? item.Imagen: 'public/Images/AnonimoPokemon.png'" class="object-cover relative z-10">
+                        <img v-bind:src="item.Imagen ? item.Imagen: 'assets/AnonimoPokemon.png'" class="object-cover relative z-10">
                     </div>                    
                     <div class="flex-auto py-5 flex flex-col justify-center items-center">
                         <h3 class="text-center font-medium text-lg xxss:text-md xxs:text-xl mb-7 px-5"><span id="nombrePoke">{{item.Nombre}}</span> <span class="text-gray-400">#{{item.id}}</span></h3>                        
@@ -128,7 +128,7 @@
                     <div class="grid grid-cols-6 gap-x-8  sm:gap-x-0 py-4 px-5">
                         <div class="col-span-6 xxss:col-span-2 h-full flex justify-center items-center">
                             <div class="w-full h-48 xxss:h-32 flex justify-center items-center">
-                                <img v-bind:src="Modal.Imagen ? Modal.Imagen : 'public/Images/AnonimoPokemon.png'" class="w-full h-full object-contain">
+                                <img v-bind:src="Modal.Imagen ? Modal.Imagen : 'assets/AnonimoPokemon.png'" class="w-full h-full object-contain">
                             </div>
                         </div>                              
                         <div class="flex justify-center items-center col-span-6 xxss:col-span-4 py-6 sm:py-0">                                          
@@ -315,7 +315,7 @@
 
             DatosEpc: async function({ commit },IdPokemon){  
                 Swal.fire({
-                    imageUrl: "public/Images/Loading.gif",
+                    imageUrl: "assets/Loading.gif",
                     imageWidth: 100,
                     title: "Cargando datos",
                     html: `<p class="text-base">Espere a que los datos de la pokedex (Pokeapi) se renderizen en la pagina, esto
